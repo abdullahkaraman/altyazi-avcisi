@@ -1,4 +1,4 @@
-# oyun-altyazi
+# altyazi-avcisi
 
 PS5'te oynadığın oyunun İngilizce altyazısını canlı olarak Türkçeye çevirip telefonda, tablette
 ya da TV'nin köşesinde gösterir. GTA 6 ile denendi. Ekranda İngilizce altyazı gösteren her oyunda
@@ -33,7 +33,7 @@ akşamda yazıldı. Yönergeyi bir yapay zekâya verip kendi kurulumuna göre uy
 
 1. **Kodu indir:**
    ```sh
-   git clone <bu deponun adresi> oyun-altyazi && cd oyun-altyazi
+   git clone https://github.com/abdullahkaraman/altyazi-avcisi.git && cd altyazi-avcisi
    ```
 2. **Ekran okuyucuyu derle:**
    ```sh
