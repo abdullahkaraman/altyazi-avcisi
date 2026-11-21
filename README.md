@@ -17,6 +17,10 @@ PS5 ──HDMI──► TV (oyunu burada oynarsın)
 Kendi yönteminle de yapabilirsin. Buradaki kod, bir yapay zekâ asistanıyla (Claude) birlikte bir
 akşamda yazıldı. Yönergeyi bir yapay zekâya verip kendi kurulumuna göre uyarlatabilirsin.
 
+**Hazır bir uygulama istersen:** [CouchSubs](https://github.com/yorulmazsinan/couchsubs) aynı işi yapan,
+açık kaynak ve ücretsiz bir proje. Mac, Windows ve Android'de çalışıyor. TV'ye kendi uygulamasını kurduğu
+için Samsung, LG ve Android TV'de çeviriyi Multi View olmadan oyunun üstünde gösterebiliyor.
+
 ## Gerekenler
 
 - **Mac** (macOS 14 veya üstü). Altyazıyı macOS'un kendi yazı tanıması (Vision) okuyor, bu yüzden
@@ -68,9 +72,10 @@ kez dokununca sayfa tam ekrana geçer. Oyunda biri konuştukça Türkçesi orada
 - **Telefon/tablet TV'nin yanında:** En temizi bu. TV yalnız oyunu gösterir, görüntü kalitesi bozulmaz.
 - **Android TV / Google TV:** Bazı uygulamalar oyunun üstünde küçük, yüzen bir pencere açabiliyor.
   Sayfayı o pencerede açarsan çeviri TV'nin köşesinde durur.
-- **Samsung (Tizen):** Uygulamalar HDMI görüntüsünün üstüne çıkamıyor. Tek yol **Multi View**:
-  telefonu ya da tableti TV'ye yansıtıp PiP olarak köşeye alırsın. Ama Multi View açıkken TV Oyun
-  Modu'nu ve HDR'ı kapatıyor, görüntü kalitesi belirgin düşüyor. Bunu dert etmiyorsan çalışıyor.
+- **Samsung (Tizen):** Mağazadaki uygulamalar HDMI görüntüsünün üstüne çıkamıyor. Bu projeyle yol
+  **Multi View**: telefonu ya da tableti TV'ye yansıtıp PiP olarak köşeye alırsın. Ama Multi View
+  açıkken TV Oyun Modu'nu ve HDR'ı kapatıyor, görüntü kalitesi belirgin düşüyor. Multi View'sız bir yol
+  istersen CouchSubs, TV'nin geliştirici modunu kullanıp kendi TV uygulamasını kuruyor.
 
 ## Bilmen gerekenler
 
@@ -89,12 +94,12 @@ kez dokununca sayfa tam ekrana geçer. Oyunda biri konuştukça Türkçesi orada
   aşılırsa birkaç satır çevrilmeden geçer.
 - **Çeviri birebir değil.** Konuşma dili ve argo anlamıyla çevrilir, küfürler yumuşatılmaz.
 
-## Hesap bilgilerini kimseye verme
+## Hesap ve gizlilik
 
-Bu tür bir çözümü hazır sunan uygulamalar PlayStation hesabınla giriş yapmanı isteyebilir. O
-zaman hesap bilgilerin onların sunucularına gider. Buradaki kurulumda PlayStation girişi yalnız
-Sony'nin kendi Remote Play uygulamasında yapılır. Çeviri için Google'a yalnız altyazı metni
-gider, ekran görüntüsü de hesap bilgisi de gitmez.
+PlayStation girişi yalnız Sony'nin kendi Remote Play uygulamasında yapılır; bu proje hesabına hiç
+dokunmaz. Çeviri için Google'a yalnız altyazı metni gider, ekran görüntüsü de hesap bilgisi de gitmez.
+Remote Play için hangi uygulamayı kullanırsan kullan, girişin Sony'nin kendi sayfasında yapıldığından
+emin ol ve şifreni başka bir yere yazma.
 
 ## Lisans
 
