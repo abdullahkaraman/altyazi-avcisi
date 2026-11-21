@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Altyazı</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #fff; overflow: hidden;
+               touch-action: none; user-select: none; -webkit-user-select: none; }  /* no zoom, scroll or text selection */
+  body { display: flex; align-items: center; justify-content: center;
+         font: 700 9vmin/1.25 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  #tr { padding: 0 5vw; text-align: center; transition: opacity .15s; }
+  #tr.empty { opacity: 0; }
+  #tr div + div { margin-top: .4em; }
+  #tr .old { color: #888; font-size: .75em; }  /* previous line, kept so fast lines can still be read */
+  #dot { position: fixed; right: 2vmin; bottom: 2vmin; width: 1.6vmin; height: 1.6vmin;
+         border-radius: 50%; background: #c33; }
+  #dot.on { background: #2a2; }
+</style>
+</head>
+<body>
+<div id="tr" class="empty"></div>
+<div id="dot" title="bağlantı"></div>
+<script>
+  const el = document.getElementById("tr"), dot = document.getElementById("dot");
+  let lines = [];
+  function fit() {  // shrink long lines so they always fit the PiP window
+    let size = 9;
+    el.style.fontSize = size + "vmin";
+    while ((el.scrollHeight > innerHeight * 0.9 || el.scrollWidth > el.clientWidth) && size > 3) {
+      size -= 0.5; el.style.fontSize = size + "vmin";
+    }
+  }
+  function connect() {
+    const es = new EventSource("/events");
+    es.onopen = () => dot.classList.add("on");
+    es.onmessage = e => {
+      const m = JSON.parse(e.data);
+      // translations can land out of order (they run in parallel): keep the two newest by seq
+      lines = m.tr ? [...lines.filter(l => l.seq !== m.seq), m].sort((a, b) => a.seq - b.seq).slice(-2) : [];
+      el.replaceChildren(...lines.map((l, i) => {
+        const d = document.createElement("div");
+        d.textContent = l.tr;
+        if (i < lines.length - 1) d.className = "old";
+        return d;
+      }));
+      el.classList.toggle("empty", !lines.length);
+      fit();
+    };
+    es.onerror = () => { dot.classList.remove("on"); es.close(); setTimeout(connect, 1500); };
+  }
+  addEventListener("resize", fit);
+  // hide browser bars on tap; pointerup, because touch-action: none stops Chrome firing "click"
+  addEventListener("pointerup", () => document.fullscreenElement || document.documentElement.requestFullscreen?.());
+  connect();
+</script>
+</body>
+</html>
